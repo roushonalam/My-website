@@ -109,13 +109,21 @@ Because EduGenius AI uses `HashRouter` and relative Vite assets (`base: './'`), 
 4. Click **Deploy site**.
 
 ### 3. GitHub Pages
-1. Build the static bundle:
-   ```bash
-   # Optional: set explicit repo base path, or leave default relative './'
-   VITE_BASE_PATH=/your-repo-name/ npm run build
-   ```
-2. Deploy the `dist/` folder to the `gh-pages` branch (via `gh-pages` CLI or GitHub Actions `actions/deploy-pages`).
-3. In **Repository Settings → Pages**, set the source to **GitHub Actions** or the `gh-pages` branch.
+
+> **Important (Avoid Blank White Page):** Do **not** set GitHub Pages to "Deploy from a branch (`main` / `/(root)`)". GitHub Pages must serve the compiled `dist/` bundle—not the raw root `index.html` (which points to `/src/main.tsx`).
+
+**Option A — Automatic via GitHub Actions (Recommended):**
+1. Push your repository to GitHub (the included `.github/workflows/deploy.yml` workflow automatically runs `npm ci` and `npm run build` with `VITE_BASE_PATH=/<repo-name>/`).
+2. In your GitHub repository, open **Settings → Pages → Build and deployment → Source** and select **GitHub Actions**.
+3. The workflow will build and publish `dist/` (including `.nojekyll` and `404.html`).
+
+**Option B — Manual `gh-pages` Branch:**
+```bash
+# Replace <repo-name> with your GitHub repository name (or omit for relative './')
+VITE_BASE_PATH=/<repo-name>/ npm run build
+npx gh-pages -d dist
+```
+Then set **Settings → Pages → Source** to **Deploy from a branch (`gh-pages` / `/(root)`)**.
 
 ---
 
