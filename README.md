@@ -113,7 +113,7 @@ Because EduGenius AI uses `HashRouter` and relative Vite assets (`base: './'`), 
 > **Important (Avoid Blank White Page):** Do **not** set GitHub Pages to "Deploy from a branch (`main` / `/(root)`)". GitHub Pages must serve the compiled `dist/` bundle—not the raw root `index.html` (which points to `/src/main.tsx`).
 
 **Option A — Automatic via GitHub Actions (Recommended):**
-1. Push your repository to GitHub (the included `.github/workflows/deploy.yml` workflow automatically runs `npm ci` and `npm run build` with `VITE_BASE_PATH=/<repo-name>/`).
+1. Push your repository to GitHub (the included `.github/workflows/deploy.yml` workflow automatically installs dependencies and runs `npm run build` with `VITE_BASE_PATH=/<repo-name>/`).
 2. In your GitHub repository, open **Settings → Pages → Build and deployment → Source** and select **GitHub Actions**.
 3. The workflow will build and publish `dist/` (including `.nojekyll` and `404.html`).
 
