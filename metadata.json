@@ -1,0 +1,6 @@
+{
+  "name": "EduGenius AI",
+  "description": "Next-Gen Bilingual AI Learning Platform powered by Google Gemini API (BYOK)",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
